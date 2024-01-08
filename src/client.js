@@ -1,39 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ImageOverlay, MapContainer, Polygon, Marker, Popup} from 'react-leaflet';
-import L from 'leaflet';
+// import ClickableImage from './clickableImage';
+import ImageMapper from 'react-img-mapper';
 
 class App extends React.Component {
-    state = { selectedIndustry: null };
+  handleAreaClick = (area) => {
+    alert(`You clicked on ${area}`);
+  };
+
   
-    handleAreaClick = (industry) => {
-      this.setState({ selectedIndustry: industry });
-    };
-
   render() {
-    const imageUrl = "https://www.mapsland.com/maps/europe/germany/stuttgart/detailed-street-map-of-central-part-of-stuttgart-city.jpg";
-    const imageBounds = [[0, 0], [709, 982]];
-    const markerPosition = [110, 400];
 
-    const customIcon = L.icon({
-      iconUrl: "https://kagi.com/proxy/425-4259787_transparent-google-map-marker-icons-png-png-download.png?c=VsWW3w2GfISzPgdnbGjU-1gunkdgRGIy8aNksYODIpt4_ysPf8ww6lQAtnJvfVKUtoqf5NCiluIFUXVTKjkZUkHjBPF03uGOWscg7rKxvOrq-hX_baZV_IKQ8uHjYlG4Grhuo4qdGh0p2V3Qt6GOxA%3D%3D",
-      iconSize: [25, 25],
-    });
-
-    //  
+    const URL = 'https://cdna.artstation.com/p/assets/images/images/019/472/426/large/francesca-baerald-fbaerald-imperialpalace-siegeofterra.jpg?1563648750';
+    const MAP = {
+        name: "my-map",
+        areas: [
+          { name: "Area1", shape: "rect", fillColor: "#eab54d4d", strokeColor: "black", coords: [50, 50, 100, 100], href: "https://example.com/1" },
+          { name: "Area2", shape: "rect", coords: [150, 150, 200, 200], href: "https://example.com/2" }
+        ]};
 
     return (
-      <MapContainer center={[709, 982]} zoom={1} style={{ height: "100vh", width: "100%" }} crs={L.CRS.Simple}>
-        <ImageOverlay
-          url={imageUrl}
-          bounds={imageBounds}
-        />
-        <Marker position={markerPosition} icon={customIcon}>
-          <Popup>
-            A popup for the marker
-          </Popup>
-        </Marker>
-      </MapContainer>
+      <div className="App">
+        <ImageMapper src={URL} map={MAP} />
+      </div>
     );
   }
 }
