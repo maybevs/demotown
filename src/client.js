@@ -15,8 +15,8 @@ class App extends React.Component {
     const MAP = {
         name: "my-map",
         areas: [
-          { name: "Area1", shape: "rect", fillColor: "#eab54d4d", strokeColor: "black", coords: [50, 50, 100, 100], href: "https://example.com/1" },
-          { name: "Area2", shape: "rect", coords: [150, 150, 200, 200], href: "https://example.com/2" }
+          { name: "Area1", active: true, shape: "rect", fillColor: "#eab54d4d", preFillColor: "#eab54d4d", strokeColor: "black", coords: [50, 50, 100, 100], href: "https://example.com/1" },
+          { name: "Area2", shape: "rect", preFillColor: "#43ff64d9", coords: [150, 150, 200, 200], href: "https://example.com/2" }
         ]};
 
     return (
